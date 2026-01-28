@@ -105,8 +105,8 @@
             <div class="header-content">
                 <!-- Logo & Site Name -->
                 <div class="logo">
-                    <a href="../index.html" style="text-decoration: none; color: inherit;">
-                        <h1><i class="fas fa-home"></i> 北見の街の電気屋さん</h1>
+                    <a href="../index.html" style="text-decoration: none;">
+                        <p style="font-size: 20px; font-weight: 700; margin: 0; color: var(--primary-blue);"><i class="fas fa-home" style="color: var(--primary-orange);"></i> 北見の街の電気屋さん</p>
                     </a>
                 </div>
 
@@ -147,6 +147,26 @@
             </div>
         </div>
     </header>
+
+    <!-- パンくずリスト -->
+    <nav aria-label="パンくずリスト" style="background: var(--bg-cream); padding: 12px 0; font-size: 14px; margin-top: 70px; border-bottom: 1px solid var(--border-light);">
+        <div class="container">
+            <ol itemscope itemtype="https://schema.org/BreadcrumbList" style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" style="display: flex; align-items: center;">
+                    <a itemprop="item" href="../index.html" style="color: var(--primary-blue); text-decoration: none; display: flex; align-items: center; transition: opacity 0.2s;">
+                        <i class="fas fa-home" style="margin-right: 4px; color: var(--primary-orange);"></i>
+                        <span itemprop="name">ホーム</span>
+                    </a>
+                    <meta itemprop="position" content="1">
+                    <i class="fas fa-chevron-right" style="color: #999; margin: 0 8px; font-size: 12px;"></i>
+                </li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span itemprop="name" style="color: var(--text-dark); font-weight: 500;">EV充電器用200V電源増設工事</span>
+                    <meta itemprop="position" content="2">
+                </li>
+            </ol>
+        </div>
+    </nav>
 
     <!-- ヒーローセクション -->
     <section class="ev-hero-slideshow">
@@ -740,7 +760,8 @@
                         <li><a href="../index.html#services">LED・照明工事</a></li>
                         <li><a href="../index.html#services">分電盤・ブレーカー</a></li>
                         <li><a href="../index.html#services">エアコン電気工事</a></li>
-                        <li><a href="#">EV充電器設置</a></li>
+                        <li><a href="../ev-charger/">EV充電器設置</a></li>
+                        <li><a href="../interphone/">インターホン工事</a></li>
                     </ul>
                 </div>
 
