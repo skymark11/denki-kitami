@@ -1,0 +1,42 @@
+# robots.txt for https://denki-kitami.com/
+# 北見の街の電気屋さん
+
+# すべての検索エンジンクローラーに対する設定
+User-agent: *
+
+# クロールを許可するページ（デフォルトで全ページ許可）
+Allow: /
+
+# クロールを禁止するディレクトリ・ファイル
+# 管理ファイルやシステムファイルへのアクセスを制限
+Disallow: /cgi-bin/
+Disallow: /.htaccess
+Disallow: /error/
+
+# 画像は検索エンジンにインデックスさせる
+Allow: /images/
+Allow: /css/
+Allow: /js/
+
+# サイトマップの場所を指定
+Sitemap: https://denki-kitami.com/sitemap.xml
+
+# Google検索エンジン用の設定
+User-agent: Googlebot
+Allow: /
+
+# Google画像検索用の設定
+User-agent: Googlebot-Image
+Allow: /images/
+
+# Bingの検索エンジン用の設定
+User-agent: Bingbot
+Allow: /
+
+# Yahoo!の検索エンジン用の設定
+User-agent: Slurp
+Allow: /
+
+# クロール速度の調整（オプション）
+# サーバーへの負荷を軽減したい場合は以下のコメントを外してください
+# Crawl-delay: 1

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>北見の電気工事なら【北見の街の電気屋さん】24時間対応・気軽にご相談</title>
+    <meta name="description" content="北見で電気のことなら街の電気屋さんにお任せください。コンセント1個から24時間対応。電気工事士による安心施工で北見市全域対応。お気軽にお電話ください。">
+    <meta name="keywords" content="北見 電気, 電気屋 北見, 電気工事 北見市, コンセント増設, LED工事, 北見市 電気 業者">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="北見の街の電気屋さん｜気軽にご相談ください">
+    <meta property="og:description" content="北見で電気工事なら街の電気屋さん。小さなことでも24時間対応いたします。">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ja_JP">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "北見の街の電気屋さん",
+        "description": "北見市の電気工事・コンセント増設・LED工事を行う地域密着の電気屋さん",
+        "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "北海道",
+            "addressLocality": "北見市"
+        },
+        "telephone": "0157-XX-XXXX",
+        "openingHours": "Mo-Su 00:00-23:59",
+        "serviceArea": {
+            "@type": "City",
+            "name": "北見市"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "電気工事サービス",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "コンセント増設工事"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "LED工事"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo & Site Name -->
+                <div class="logo">
+                    <h1><i class="fas fa-home"></i> 北見の街の電気屋さん</h1>
+                </div>
+                
+                <!-- Navigation Menu -->
+                <nav class="header-nav">
+                    <ul class="nav-list">
+                        <li><a href="#services">サービス・料金</a></li>
+                        <li><a href="#cases">施工事例</a></li>
+                        <li><a href="#faq">よくある質問</a></li>
+                        <li><a href="#company">会社案内</a></li>
+                        <li><a href="#contact">お問い合わせ</a></li>
+                    </ul>
+                </nav>
+                
+                <!-- Contact Info -->
+                <div class="header-contact">
+                    <a href="tel:0157XXXXXX" class="phone-link">
+                        <i class="fas fa-phone"></i>
+                        <span>0157-XX-XXXX</span>
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="mobile-menu">
+                <ul class="mobile-nav-list">
+                    <li><a href="#services" onclick="closeMobileMenu()">サービス・料金</a></li>
+                    <li><a href="#cases" onclick="closeMobileMenu()">施工事例</a></li>
+                    <li><a href="#faq" onclick="closeMobileMenu()">よくある質問</a></li>
+                    <li><a href="#company" onclick="closeMobileMenu()">会社案内</a></li>
+                    <li><a href="#contact" onclick="closeMobileMenu()">お問い合わせ</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Slideshow Section -->
+    <section class="hero-slideshow">
+        <div class="slideshow-container">
+            <!-- Slide 1 - メインサービス紹介 -->
+            <div class="slide active">
+                <div class="slide-background">
+                    <img src="images/hero-electrician.jpg" alt="北見の街の電気屋さん - 親しみやすい電気工事士" class="slide-image">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide-content">
+                    <div class="container">
+                        <div class="slide-text">
+                            <h1 class="slide-title">北見の電気のことなら、<br>お任せください</h1>
+                            <p class="slide-subtitle">～ お電話一本で、すぐに駆けつけます ～</p>
+                            <p class="slide-message">【街の電気屋さんだから、小さなことでも気軽にどうぞ】</p>
+                            <div class="slide-cta">
+                                <a href="tel:0157-XX-XXXX" class="btn btn-primary slide-btn">
+                                    <i class="fas fa-phone"></i> 今すぐお電話
+                                </a>
+                                <a href="#contact" class="btn btn-outline slide-btn">
+                                    <i class="fas fa-envelope"></i> 無料見積もり
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 - 作業実績 -->
+            <div class="slide">
+                <div class="slide-background">
+                    <img src="images/electrician-work.jpg" alt="電気工事の作業実績" class="slide-image">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide-content">
+                    <div class="container">
+                        <div class="slide-text">
+                            <h1 class="slide-title">確かな技術で<br>安心の電気工事</h1>
+                            <p class="slide-subtitle">～ 有資格者による丁寧な施工 ～</p>
+                            <p class="slide-message">【コンセント1個から大きな工事まで対応】</p>
+                            <div class="slide-cta">
+                                <a href="#services" class="btn btn-primary slide-btn">
+                                    <i class="fas fa-tools"></i> サービス一覧
+                                </a>
+                                <a href="#contact" class="btn btn-outline slide-btn">
+                                    <i class="fas fa-calculator"></i> 料金相談
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 - エアコン工事特化 -->
+            <div class="slide">
+                <div class="slide-background">
+                    <img src="images/aircon-installation.jpg" alt="エアコン設置工事" class="slide-image">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide-content">
+                    <div class="container">
+                        <div class="slide-text">
+                            <h1 class="slide-title">エアコン工事も<br>お任せください</h1>
+                            <p class="slide-subtitle">～ 専用回路から設置まで一貫対応 ～</p>
+                            <p class="slide-message">【200V対応・室外機配線もお任せ】</p>
+                            <div class="slide-cta">
+                                <a href="tel:0157-XX-XXXX" class="btn btn-primary slide-btn">
+                                    <i class="fas fa-snowflake"></i> エアコン工事相談
+                                </a>
+                                <a href="#contact" class="btn btn-outline slide-btn">
+                                    <i class="fas fa-clipboard-check"></i> 見積もり依頼
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation arrows -->
+            <button class="slide-nav slide-prev" onclick="changeSlide(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slide-nav slide-next" onclick="changeSlide(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <!-- Slide indicators -->
+            <div class="slide-indicators">
+                <button class="indicator active" onclick="currentSlide(1)"></button>
+                <button class="indicator" onclick="currentSlide(2)"></button>
+                <button class="indicator" onclick="currentSlide(3)"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators Section (moved outside hero) -->
+    <section class="hero-trust-section">
+        <div class="container">
+            
+            <!-- Trust Indicators -->
+            <div class="trust-indicators">
+                <div class="trust-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>電気工事士資格保有</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-moon"></i>
+                    <span>24時間対応</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-home"></i>
+                    <span>北見市全域</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-yen-sign"></i>
+                    <span>明朗会計</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-handshake"></i>
+                    <span>1個からOK</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">北見の街の電気屋さんができること</h2>
+            <p class="section-subtitle">コンセント1個から、なんでもお気軽にご相談ください</p>
+            
+            <div class="services-grid">
+                <!-- Row 1 -->
+                <div class="service-card service-card-with-image">
+                    <div class="service-image">
+                        <img src="images/outlet-installation.jpg" alt="コンセント増設工事 - 北見で壁コンセント設置作業" class="service-work-image">
+                        <div class="service-image-overlay">
+                            <div class="service-icon">
+                                <i class="fas fa-plug"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>コンセント増設</h3>
+                        <p class="price">7,000円～</p>
+                        <p class="service-note">「1個からでも大丈夫」</p>
+                        <ul class="service-features">
+                            <li>エアコン用コンセント</li>
+                            <li>USB付きコンセント</li>
+                            <li>200V対応工事</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card service-card-with-image">
+                    <div class="service-image">
+                        <img src="images/led-lighting-installation.jpg" alt="LED照明工事 - 北見で天井照明設置作業" class="service-work-image">
+                        <div class="service-image-overlay">
+                            <div class="service-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>LED・照明工事</h3>
+                        <p class="price">3,000円～</p>
+                        <p class="service-note">「電球1個だけでも」</p>
+                        <ul class="service-features">
+                            <li>蛍光灯→LED交換</li>
+                            <li>シーリングライト</li>
+                            <li>ダウンライト設置</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card service-card-with-image">
+                    <div class="service-image">
+                        <img src="images/electrical-panel-work.jpg" alt="分電盤・ブレーカー工事 - 北見で配電盤交換作業" class="service-work-image">
+                        <div class="service-image-overlay">
+                            <div class="service-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>分電盤・ブレーカー</h3>
+                        <p class="price">50,000円～</p>
+                        <p class="service-note">「古い分電盤交換」</p>
+                        <ul class="service-features">
+                            <li>分電盤交換</li>
+                            <li>ブレーカー増設</li>
+                            <li>漏電対策</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Row 2 -->
+                <div class="service-card service-card-with-image">
+                    <div class="service-image">
+                        <img src="images/aircon-installation.jpg" alt="エアコン電気工事 - 北見で専用回路設置作業" class="service-work-image">
+                        <div class="service-image-overlay">
+                            <div class="service-icon">
+                                <i class="fas fa-snowflake"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>エアコン電気工事</h3>
+                        <p class="price">15,000円～</p>
+                        <p class="service-note">「専用回路が必要？」</p>
+                        <ul class="service-features">
+                            <li>エアコン専用回路</li>
+                            <li>200V配線対応</li>
+                            <li>室外機配線</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card service-card-with-image">
+                    <div class="service-image">
+                        <img src="images/interphone-installation.jpg" alt="インターホン工事 - 北見でテレビドアホン設置作業" class="service-work-image">
+                        <div class="service-image-overlay">
+                            <div class="service-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>インターホン工事</h3>
+                        <p class="price">相談ください</p>
+                        <p class="service-note">「古いのを新しく」</p>
+                        <ul class="service-features">
+                            <li>テレビドアホン</li>
+                            <li>スマホ連携</li>
+                            <li>配線工事</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card service-card-with-image">
+                    <div class="service-image">
+                        <img src="images/security-camera-installation.jpg" alt="防犯カメラ設置 - 北見で住宅セキュリティカメラ取付作業" class="service-work-image">
+                        <div class="service-image-overlay">
+                            <div class="service-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>防犯カメラ設置</h3>
+                        <p class="price">相談ください</p>
+                        <p class="service-note">「家の安全のために」</p>
+                        <ul class="service-features">
+                            <li>夜間撮影対応</li>
+                            <li>スマホで監視</li>
+                            <li>録画機能付き</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Emergency Banner -->
+            <div class="emergency-banner">
+                <h3><i class="fas fa-exclamation-triangle"></i> 緊急トラブル 24時間対応</h3>
+                <p>停電・漏電・ブレーカーが落ちる・電気がつかない</p>
+                <a href="tel:0157XXXXXX" class="btn btn-emergency">今すぐ電話する</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Banner Section -->
+    <section class="business-banner">
+        <div class="container">
+            <div class="business-content">
+                <h3><i class="fas fa-building"></i> 建築・リフォーム業者の皆様へ</h3>
+                <p>新築住宅の電気工事 ｜ リフォーム電気工事 ｜ 協力会社募集中</p>
+                <a href="/business/" class="btn btn-business">業者様専用ページはこちら</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose">
+        <div class="container">
+            <h2 class="section-title">なぜ北見の街の電気屋さんが選ばれるの？</h2>
+            
+            <div class="reasons-grid">
+                <div class="reason-item">
+                    <div class="reason-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>気軽に頼みやすい</h3>
+                    <p>コンセント1個、LED電球1個からでも喜んでお伺いします。街の電気屋さんだから、小さなことでも遠慮しないでくださいね。</p>
+                </div>
+                
+                <div class="reason-item">
+                    <div class="reason-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3>すぐに駆けつけます</h3>
+                    <p>お電話いただければ北見市内どこでも迅速に対応。緊急時は24時間受付で、できる限り早くお伺いいたします。</p>
+                </div>
+                
+                <div class="reason-item">
+                    <div class="reason-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>電気工事士の安心施工</h3>
+                    <p>国家資格を持った電気工事士が責任を持って施工。工事前にはしっかりと説明し、追加料金は一切ありません。</p>
+                </div>
+                
+                <div class="reason-item">
+                    <div class="reason-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>地域密着の信頼関係</h3>
+                    <p>北見の町で長くお世話になっています。工事後もお困りのことがあれば、いつでもお気軽にお電話ください。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">お問い合わせ・無料見積もり</h2>
+            <p class="section-subtitle">お電話またはフォームからお気軽にご相談ください</p>
+            
+            <div class="contact-content">
+                <div class="contact-phone">
+                    <div class="phone-box">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>お電話でのご相談</h3>
+                        <p class="phone-number-large">0157-XX-XXXX</p>
+                        <p class="phone-hours">24時間365日受付</p>
+                        <p class="phone-note">「コンセント1個だけなんですけど…」<br>そんなお電話も大歓迎です！</p>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>メールでのお問い合わせ</h3>
+                    <form class="form">
+                        <div class="form-group">
+                            <label for="name">お名前 <span class="required">*</span></label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="tel">お電話番号 <span class="required">*</span></label>
+                            <input type="tel" id="tel" name="tel" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">メールアドレス</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">ご希望のサービス</label>
+                            <select id="service" name="service">
+                                <option value="">選択してください</option>
+                                <option value="コンセント増設">コンセント増設</option>
+                                <option value="LED工事">LED・照明工事</option>
+                                <option value="分電盤工事">分電盤・ブレーカー工事</option>
+                                <option value="エアコン工事">エアコン電気工事</option>
+                                <option value="インターホン">インターホン工事</option>
+                                <option value="防犯カメラ">防犯カメラ設置</option>
+                                <option value="緊急対応">緊急トラブル対応</option>
+                                <option value="その他">その他</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">ご相談内容</label>
+                            <textarea id="message" name="message" rows="5" placeholder="どんな小さなことでもお気軽にお書きください"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-large">
+                            <i class="fas fa-paper-plane"></i>
+                            お問い合わせを送信する
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <h3><i class="fas fa-home"></i> 北見の街の電気屋さん</h3>
+                    <p>北見市の電気工事なら、なんでもお任せください。<br>
+                    コンセント1個から、24時間いつでも対応いたします。</p>
+                    
+                    <div class="footer-contact">
+                        <p><i class="fas fa-phone"></i> 0157-XX-XXXX（24時間受付）</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 北海道北見市（市内全域対応）</p>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>サービス</h4>
+                    <ul>
+                        <li><a href="#services">コンセント増設</a></li>
+                        <li><a href="#services">LED・照明工事</a></li>
+                        <li><a href="#services">分電盤・ブレーカー</a></li>
+                        <li><a href="#services">エアコン電気工事</a></li>
+                        <li><a href="#services">緊急対応</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-business">
+                    <h4>業者様向け</h4>
+                    <ul>
+                        <li><a href="/business/shinchiku/">新築住宅電気工事</a></li>
+                        <li><a href="/business/reform/">リフォーム電気工事</a></li>
+                        <li><a href="/business/partner/">協力会社募集</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 北見の街の電気屋さん. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>

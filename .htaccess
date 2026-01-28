@@ -1,0 +1,189 @@
+# Apache設定ファイル
+# 北見の街の電気屋さん - https://denki-kitami.com/
+
+# ====================
+# Xサーバー固有設定
+# ====================
+
+# Xサーバーのキャッシュ設定
+SetEnvIf Request_URI ".*" Ngx_Cache_NoCacheMode=off
+SetEnvIf Request_URI ".*" Ngx_Cache_AllCacheMode
+
+# ====================
+# 基本設定
+# ====================
+
+# 文字エンコーディング
+AddDefaultCharset UTF-8
+
+# デフォルトのインデックスファイル
+DirectoryIndex index.html index.htm
+
+# ====================
+# セキュリティ設定
+# ====================
+
+# ディレクトリリスティングを無効化
+Options -Indexes
+
+# .htaccessファイルへのアクセスを拒否
+<Files ~ "^\.ht">
+    Require all denied
+</Files>
+
+# 隠しファイルへのアクセスを拒否
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# バックアップファイルへのアクセスを拒否
+<FilesMatch "\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist)$">
+    Require all denied
+</FilesMatch>
+
+# ====================
+# HTTPS強制リダイレクト
+# ====================
+
+RewriteEngine On
+
+# HTTPSへのリダイレクト
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# wwwなしに統一（例：www.denki-kitami.com -> denki-kitami.com）
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+# ====================
+# キャッシュ設定
+# ====================
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # デフォルトのキャッシュ期間
+    ExpiresDefault "access plus 1 month"
+
+    # HTML（短めのキャッシュ）
+    ExpiresByType text/html "access plus 1 day"
+
+    # CSS/JavaScript
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType application/x-javascript "access plus 1 year"
+
+    # 画像ファイル
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+
+    # フォントファイル
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+
+    # その他
+    ExpiresByType application/pdf "access plus 1 month"
+</IfModule>
+
+# キャッシュコントロールヘッダー
+<IfModule mod_headers.c>
+    # HTMLファイルはキャッシュしない（常に最新を表示）
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "no-cache, must-revalidate"
+    </FilesMatch>
+
+    # CSS/JSファイルのキャッシュ
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch>
+
+    # 画像ファイルのキャッシュ
+    <FilesMatch "\.(jpg|jpeg|png|gif|svg|webp|ico)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch>
+</IfModule>
+
+# ====================
+# Gzip圧縮
+# ====================
+
+<IfModule mod_deflate.c>
+    # テキストベースのファイルを圧縮
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/atom_xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+
+    # 古いブラウザ対応
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+</IfModule>
+
+# ====================
+# MIME タイプ設定
+# ====================
+
+<IfModule mod_mime.c>
+    # JavaScript
+    AddType application/javascript js
+
+    # 画像
+    AddType image/svg+xml svg svgz
+    AddType image/webp webp
+
+    # フォント
+    AddType font/ttf ttf
+    AddType font/woff woff
+    AddType font/woff2 woff2
+
+    # その他
+    AddType application/pdf pdf
+</IfModule>
+
+# ====================
+# エラーページ設定（オプション）
+# ====================
+
+# カスタムエラーページを作成した場合は以下のコメントを外してください
+# ErrorDocument 404 /404.html
+# ErrorDocument 500 /500.html
+
+# ====================
+# SEO対策
+# ====================
+
+# トレイリングスラッシュの統一（オプション）
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_URI} !(.*)/$
+# RewriteRule ^(.*)$ https://denki-kitami.com/$1/ [L,R=301]
+
+# ====================
+# パフォーマンス最適化
+# ====================
+
+# KeepAlive設定（サーバー設定に依存）
+<IfModule mod_headers.c>
+    Header set Connection keep-alive
+</IfModule>
+
+# ETags無効化（キャッシュ制御を優先）
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+FileETag None
