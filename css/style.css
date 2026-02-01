@@ -3548,7 +3548,7 @@ footer {
     }
     
     .hero-trust-section {
-        padding: 30px 0;
+        padding: 15px 0;
     }
     
     /* お困りごと別セクション - モバイル対応 */
@@ -3659,6 +3659,7 @@ footer {
     .trust-indicators {
         flex-wrap: wrap;
         gap: 15px;
+        margin-top: 15px;
     }
     
     .trust-item {
@@ -3667,7 +3668,7 @@ footer {
     
     /* Services */
     .services {
-        padding: 60px 0;
+        padding: 30px 0;
     }
     
     .services-grid {
