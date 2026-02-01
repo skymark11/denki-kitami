@@ -3276,9 +3276,9 @@ footer {
     }
     
     .logo h1 {
-        font-size: 18px;
+        font-size: 20px;
     }
-    
+
     .header-content {
         gap: 15px;
     }
@@ -3781,7 +3781,7 @@ footer {
 
     /* Header Small Mobile */
     .logo h1 {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .header-contact .phone-link {
