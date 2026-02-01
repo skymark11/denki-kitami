@@ -3657,13 +3657,16 @@ footer {
     }
     
     .trust-indicators {
-        flex-wrap: wrap;
-        gap: 15px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px 15px;
         margin-top: 15px;
+        padding: 15px;
     }
-    
+
     .trust-item {
-        font-size: 14px;
+        font-size: 13px;
+        justify-content: center;
     }
     
     /* Services */
