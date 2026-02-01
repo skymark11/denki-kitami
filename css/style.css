@@ -66,12 +66,18 @@ body {
     flex-shrink: 0;
 }
 
-.logo h1 {
+.logo h1,
+.logo .logo-text {
     color: var(--primary-blue);
     font-size: 20px;
     font-weight: 700;
     margin: 0;
     white-space: nowrap;
+}
+
+.logo .logo-link {
+    text-decoration: none;
+    color: inherit;
 }
 
 .logo i {
@@ -3253,7 +3259,8 @@ footer {
         font-size: 14px;
     }
     
-    .logo h1 {
+    .logo h1,
+    .logo .logo-text {
         font-size: 20px;
     }
     
@@ -3275,10 +3282,11 @@ footer {
         display: block;
     }
     
-    .logo h1 {
-        font-size: 18px;
+    .logo h1,
+    .logo .logo-text {
+        font-size: 20px;
     }
-    
+
     .header-content {
         gap: 15px;
     }
@@ -3307,11 +3315,10 @@ footer {
         min-width: 0;
     }
 
-    .logo h1 {
-        font-size: 16px;
+    .logo h1,
+    .logo .logo-text {
+        font-size: 20px;
         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
     }
 
     /* Hide desktop navigation */
@@ -3329,23 +3336,30 @@ footer {
         margin-left: 10px;
     }
 
-    /* Mobile contact info */
+    /* Mobile contact info - icon only */
     .header-contact {
         flex-shrink: 0;
         order: 2;
     }
 
     .header-contact .phone-link {
-        padding: 6px 12px;
-        font-size: 13px;
+        padding: 8px;
+        font-size: 0;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
     }
 
     .header-contact .phone-link span {
-        font-size: 13px;
+        display: none;
     }
 
     .header-contact .phone-link i {
-        font-size: 14px;
+        font-size: 16px;
     }
     
     /* Hero Section */
@@ -3534,7 +3548,7 @@ footer {
     }
     
     .hero-trust-section {
-        padding: 30px 0;
+        padding: 15px 0;
     }
     
     /* お困りごと別セクション - モバイル対応 */
@@ -3643,17 +3657,21 @@ footer {
     }
     
     .trust-indicators {
-        flex-wrap: wrap;
-        gap: 15px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px 15px;
+        margin-top: 15px;
+        padding: 15px;
     }
-    
+
     .trust-item {
-        font-size: 14px;
+        font-size: 13px;
+        justify-content: center;
     }
     
     /* Services */
     .services {
-        padding: 60px 0;
+        padding: 30px 0;
     }
     
     .services-grid {
@@ -3775,17 +3793,19 @@ footer {
     }
 
     /* Header Small Mobile */
-    .logo h1 {
-        font-size: 14px;
+    .logo h1,
+    .logo .logo-text {
+        font-size: 20px;
     }
 
     .header-contact .phone-link {
-        padding: 5px 10px;
-        font-size: 12px;
+        width: 32px;
+        height: 32px;
+        padding: 6px;
     }
 
-    .header-contact .phone-link span {
-        font-size: 12px;
+    .header-contact .phone-link i {
+        font-size: 14px;
     }
 
     .mobile-menu-toggle {

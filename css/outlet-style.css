@@ -6,7 +6,7 @@
 .page-title-section {
     background-color: var(--bg-cream);
     padding: 40px 0 30px;
-    margin-top: 60px;
+    margin-top: 0;
 }
 
 .page-title {
@@ -573,8 +573,12 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+    .page-title-section {
+        padding: 20px 0 15px;
+    }
+
     .page-title {
-        font-size: 24px;
+        font-size: 22px;
     }
 
     .intro-content h2 {
