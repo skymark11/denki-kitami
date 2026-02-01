@@ -3310,8 +3310,6 @@ footer {
     .logo h1 {
         font-size: 16px;
         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
     }
 
     /* Hide desktop navigation */
@@ -3329,23 +3327,30 @@ footer {
         margin-left: 10px;
     }
 
-    /* Mobile contact info */
+    /* Mobile contact info - icon only */
     .header-contact {
         flex-shrink: 0;
         order: 2;
     }
 
     .header-contact .phone-link {
-        padding: 6px 12px;
-        font-size: 13px;
+        padding: 8px;
+        font-size: 0;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
     }
 
     .header-contact .phone-link span {
-        font-size: 13px;
+        display: none;
     }
 
     .header-contact .phone-link i {
-        font-size: 14px;
+        font-size: 16px;
     }
     
     /* Hero Section */
@@ -3780,12 +3785,13 @@ footer {
     }
 
     .header-contact .phone-link {
-        padding: 5px 10px;
-        font-size: 12px;
+        width: 32px;
+        height: 32px;
+        padding: 6px;
     }
 
-    .header-contact .phone-link span {
-        font-size: 12px;
+    .header-contact .phone-link i {
+        font-size: 14px;
     }
 
     .mobile-menu-toggle {
