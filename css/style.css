@@ -3308,7 +3308,7 @@ footer {
     }
 
     .logo h1 {
-        font-size: 16px;
+        font-size: 20px;
         white-space: nowrap;
     }
 
@@ -3781,7 +3781,7 @@ footer {
 
     /* Header Small Mobile */
     .logo h1 {
-        font-size: 14px;
+        font-size: 18px;
     }
 
     .header-contact .phone-link {
