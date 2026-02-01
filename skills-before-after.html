@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills導入 Before / After 全体像</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.7; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+  h1 { text-align: center; font-size: 2rem; margin: 40px 0 10px; color: #f8fafc; }
+  .subtitle { text-align: center; color: #94a3b8; margin-bottom: 50px; font-size: 1.1rem; }
+
+  /* ===== Section Headers ===== */
+  .section-title {
+    font-size: 1.5rem; color: #38bdf8; margin: 60px 0 30px;
+    padding-bottom: 10px; border-bottom: 2px solid #1e3a5f;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-title .num {
+    background: #38bdf8; color: #0f172a; width: 36px; height: 36px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 1rem; flex-shrink: 0;
+  }
+
+  /* ===== Before / After Comparison ===== */
+  .comparison {
+    display: grid; grid-template-columns: 1fr 60px 1fr; gap: 0;
+    margin: 20px 0 40px; align-items: stretch;
+  }
+  .before, .after {
+    padding: 24px; border-radius: 12px; position: relative;
+  }
+  .before {
+    background: linear-gradient(135deg, #1e1e2e, #2d1b1b);
+    border: 2px solid #ef4444;
+  }
+  .after {
+    background: linear-gradient(135deg, #1e1e2e, #1b2d1e);
+    border: 2px solid #22c55e;
+  }
+  .arrow-col {
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem; color: #fbbf24;
+  }
+  .label {
+    font-size: 0.85rem; font-weight: bold; text-transform: uppercase;
+    letter-spacing: 2px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+  }
+  .before .label { color: #f87171; }
+  .after .label { color: #4ade80; }
+  .label .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .before .dot { background: #ef4444; }
+  .after .dot { background: #22c55e; }
+
+  .box-title { font-size: 1.1rem; font-weight: bold; margin-bottom: 8px; color: #f8fafc; }
+
+  ul.items { list-style: none; padding: 0; }
+  ul.items li {
+    padding: 6px 0; padding-left: 22px; position: relative;
+    font-size: 0.95rem; color: #cbd5e1;
+  }
+  ul.items li::before {
+    content: ''; position: absolute; left: 0; top: 13px;
+    width: 12px; height: 12px; border-radius: 3px;
+  }
+  .before ul.items li::before { background: #7f1d1d; }
+  .after ul.items li::before { background: #14532d; }
+
+  /* ===== Directory Tree ===== */
+  .tree-comparison {
+    display: grid; grid-template-columns: 1fr 60px 1fr; gap: 0;
+    margin: 20px 0 40px;
+  }
+  .tree-box {
+    background: #1e293b; border-radius: 12px; padding: 20px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    line-height: 1.8; overflow-x: auto;
+  }
+  .tree-box.before-tree { border: 2px solid #ef4444; }
+  .tree-box.after-tree { border: 2px solid #22c55e; }
+  .tree-label { font-family: 'Helvetica Neue', Arial, sans-serif; }
+  .new-file { color: #4ade80; font-weight: bold; }
+  .existing { color: #94a3b8; }
+  .highlight { color: #fbbf24; }
+
+  /* ===== Flow Diagram ===== */
+  .flow-section { margin: 30px 0; }
+  .flow-row {
+    display: flex; align-items: center; gap: 0; justify-content: center;
+    flex-wrap: wrap; margin: 10px 0;
+  }
+  .flow-box {
+    background: #1e293b; border: 2px solid #334155; border-radius: 10px;
+    padding: 14px 18px; text-align: center; min-width: 140px;
+    font-size: 0.85rem;
+  }
+  .flow-box.active { border-color: #38bdf8; background: #0c2d48; }
+  .flow-box.skill { border-color: #a78bfa; background: #1e1145; }
+  .flow-box.output { border-color: #22c55e; background: #0a2e14; }
+  .flow-box .icon { font-size: 1.5rem; margin-bottom: 4px; }
+  .flow-box .text { font-size: 0.8rem; color: #94a3b8; margin-top: 4px; }
+  .flow-arrow { color: #475569; font-size: 1.5rem; padding: 0 8px; flex-shrink: 0; }
+
+  /* ===== Before Flow (Red) ===== */
+  .flow-box.old { border-color: #dc2626; background: #2a1010; }
+  .flow-box.old .icon { color: #f87171; }
+
+  /* ===== Metrics ===== */
+  .metrics {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px; margin: 30px 0;
+  }
+  .metric-card {
+    background: #1e293b; border-radius: 12px; padding: 24px; text-align: center;
+    border: 1px solid #334155;
+  }
+  .metric-card .value { font-size: 2rem; font-weight: bold; }
+  .metric-card .value.red { color: #f87171; }
+  .metric-card .value.green { color: #4ade80; }
+  .metric-card .desc { color: #94a3b8; font-size: 0.85rem; margin-top: 6px; }
+  .metric-card .change { margin-top: 8px; font-size: 0.8rem; padding: 4px 10px; border-radius: 20px; display: inline-block; }
+  .metric-card .change.up { background: #14532d; color: #4ade80; }
+  .metric-card .change.down { background: #7f1d1d; color: #f87171; }
+
+  /* ===== Priority Table ===== */
+  table.priority {
+    width: 100%; border-collapse: collapse; margin: 20px 0;
+    font-size: 0.9rem;
+  }
+  table.priority th {
+    background: #1e3a5f; color: #38bdf8; padding: 12px 16px;
+    text-align: left; font-weight: 600;
+  }
+  table.priority td {
+    padding: 12px 16px; border-bottom: 1px solid #1e293b;
+  }
+  table.priority tr:nth-child(even) { background: #1e293b30; }
+  table.priority .badge {
+    padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: bold;
+  }
+  .badge.high { background: #dc2626; color: #fff; }
+  .badge.mid { background: #f59e0b; color: #000; }
+  .badge.low { background: #3b82f6; color: #fff; }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 800px) {
+    .comparison, .tree-comparison { grid-template-columns: 1fr; gap: 10px; }
+    .arrow-col { transform: rotate(90deg); padding: 10px 0; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); padding: 10px 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <h1>Anthropic Skills 導入 Before / After</h1>
+  <p class="subtitle">denki-kitami.com プロジェクトへの適用全体像</p>
+
+  <!-- ================================================ -->
+  <!-- SECTION 1: PROJECT STRUCTURE -->
+  <!-- ================================================ -->
+  <div class="section-title"><span class="num">1</span> プロジェクト構造の変化</div>
+
+  <div class="tree-comparison">
+    <div class="tree-box before-tree">
+      <div class="label tree-label"><span class="dot"></span> BEFORE: 現在のディレクトリ</div>
+      <br>
+      <span class="existing">denki-kitami/</span><br>
+      <span class="existing">&nbsp;&nbsp;.claude/</span><br>
+      <span class="existing">&nbsp;&nbsp;&nbsp;&nbsp;settings.local.json</span> <span style="color:#f87171">← これだけ</span><br>
+      <span class="existing">&nbsp;&nbsp;index.html</span><br>
+      <span class="existing">&nbsp;&nbsp;ev-charger/</span><br>
+      <span class="existing">&nbsp;&nbsp;interphone/</span><br>
+      <span class="existing">&nbsp;&nbsp;outlet-installation/</span><br>
+      <span class="existing">&nbsp;&nbsp;leakage-repair/</span><br>
+      <span class="existing">&nbsp;&nbsp;css/ js/ images/</span><br>
+      <span class="existing">&nbsp;&nbsp;seo-research/</span><br>
+      <span class="existing">&nbsp;&nbsp;market-research/</span><br>
+      <span style="color:#f87171">&nbsp;&nbsp;(CLAUDE.md なし)</span><br>
+      <span style="color:#f87171">&nbsp;&nbsp;(Skills なし)</span><br>
+    </div>
+    <div class="arrow-col">→</div>
+    <div class="tree-box after-tree">
+      <div class="label tree-label"><span class="dot"></span> AFTER: Skills導入後</div>
+      <br>
+      <span class="existing">denki-kitami/</span><br>
+      <span class="new-file">&nbsp;&nbsp;CLAUDE.md</span> <span style="color:#4ade80">← NEW: プロジェクト規約</span><br>
+      <span class="existing">&nbsp;&nbsp;.claude/</span><br>
+      <span class="existing">&nbsp;&nbsp;&nbsp;&nbsp;settings.local.json</span><br>
+      <span class="new-file">&nbsp;&nbsp;&nbsp;&nbsp;skills/</span><br>
+      <span class="new-file">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;create-service-page/</span> <span style="color:#fbbf24">← サブページ量産</span><br>
+      <span class="new-file">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SKILL.md</span><br>
+      <span class="new-file">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;template.html</span><br>
+      <span class="new-file">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;checklist.md</span><br>
+      <span class="new-file">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;localize-site/</span> <span style="color:#fbbf24">← 全国版展開</span><br>
+      <span class="new-file">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SKILL.md</span><br>
+      <span class="new-file">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reference.md</span><br>
+      <span class="new-file">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;audit-page/</span> <span style="color:#fbbf24">← SEO/品質監査</span><br>
+      <span class="new-file">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SKILL.md</span><br>
+      <span class="new-file">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content-strategy/</span> <span style="color:#fbbf24">← 戦略策定</span><br>
+      <span class="new-file">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SKILL.md</span><br>
+      <span class="existing">&nbsp;&nbsp;index.html</span><br>
+      <span class="existing">&nbsp;&nbsp;ev-charger/ interphone/ ...</span><br>
+    </div>
+  </div>
+
+  <!-- ================================================ -->
+  <!-- SECTION 2: SUBPAGE CREATION FLOW -->
+  <!-- ================================================ -->
+  <div class="section-title"><span class="num">2</span> サブページ作成フロー（最大の変化）</div>
+
+  <p style="color:#f87171; margin-bottom: 12px; font-weight: bold;">BEFORE: 毎回ゼロから指示（7-10回のやり取り）</p>
+  <div class="flow-row">
+    <div class="flow-box old"><div class="icon">💬</div>市場調査を<br>依頼<div class="text">手動で指示</div></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box old"><div class="icon">💬</div>キーワード<br>分析を依頼<div class="text">手動で指示</div></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box old"><div class="icon">💬</div>コンテンツ<br>戦略を依頼<div class="text">手動で指示</div></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box old"><div class="icon">💬</div>HTML構造を<br>説明<div class="text">既存ページ参照指示</div></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box old"><div class="icon">💬</div>CSS/SEO<br>を個別依頼<div class="text">手動で指示</div></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box old"><div class="icon">😰</div>品質に<br>バラつき<div class="text">一貫性なし</div></div>
+  </div>
+
+  <br>
+  <p style="color:#4ade80; margin-bottom: 12px; font-weight: bold;">AFTER: 1コマンドで全自動（1回の呼び出し）</p>
+  <div class="flow-row">
+    <div class="flow-box active">
+      <div class="icon">⌨️</div>
+      <strong>/create-service-page</strong><br>分電盤交換
+      <div class="text">1コマンド入力</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box skill">
+      <div class="icon">🧠</div>
+      SKILL.md が<br>自動ロード
+      <div class="text">テンプレ+規約+戦略</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box skill">
+      <div class="icon">⚡</div>
+      サブエージェント<br>並列実行
+      <div class="text">調査・戦略・実装を同時</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box output">
+      <div class="icon">✅</div>
+      完成ページ<br>一式出力
+      <div class="text">HTML+CSS+SEO+構造化データ</div>
+    </div>
+  </div>
+
+  <!-- ================================================ -->
+  <!-- SECTION 3: NATIONAL EXPANSION -->
+  <!-- ================================================ -->
+  <div class="section-title"><span class="num">3</span> 全国版展開フロー</div>
+
+  <div class="comparison">
+    <div class="before">
+      <div class="label"><span class="dot"></span> Before</div>
+      <div class="box-title">地域展開のたびに...</div>
+      <ul class="items">
+        <li>全HTMLファイルを手動コピー</li>
+        <li>地名を1つずつ検索置換 (北見市→札幌市)</li>
+        <li>電話番号を手動で差し替え</li>
+        <li>構造化データ (JSON-LD) を手動書き換え</li>
+        <li>地図座標・対応エリアを手動修正</li>
+        <li>各ページのSEOメタタグを個別修正</li>
+        <li>漏れ・不整合のリスク大</li>
+      </ul>
+    </div>
+    <div class="arrow-col">→</div>
+    <div class="after">
+      <div class="label"><span class="dot"></span> After</div>
+      <div class="box-title">1コマンドで地域カスタマイズ</div>
+      <ul class="items">
+        <li><code style="color:#fbbf24">/localize-site 札幌市 011-xxx-xxxx</code></li>
+        <li>$1=地域名 $2=電話番号 で自動置換</li>
+        <li>reference.md に共通テンプレート定義済</li>
+        <li>構造化データも変数で自動生成</li>
+        <li>座標・エリアもパラメータ化</li>
+        <li>全ページ一括で一貫性保証</li>
+        <li>品質チェック Skill で自動検証</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ================================================ -->
+  <!-- SECTION 4: QUALITY AUDIT -->
+  <!-- ================================================ -->
+  <div class="section-title"><span class="num">4</span> 品質監査・SEOチェック</div>
+
+  <div class="comparison">
+    <div class="before">
+      <div class="label"><span class="dot"></span> Before</div>
+      <div class="box-title">バラバラに依頼</div>
+      <ul class="items">
+        <li>SEO監査を手動で依頼</li>
+        <li>コンプライアンスチェックを別途依頼</li>
+        <li>リンク切れ確認を別途依頼</li>
+        <li>レスポンシブ確認を別途依頼</li>
+        <li>それぞれ別セッションになりがち</li>
+        <li>結果の形式がバラバラ</li>
+      </ul>
+    </div>
+    <div class="arrow-col">→</div>
+    <div class="after">
+      <div class="label"><span class="dot"></span> After</div>
+      <div class="box-title">1コマンド + 並列実行</div>
+      <ul class="items">
+        <li><code style="color:#fbbf24">/audit-page ev-charger</code></li>
+        <li>SEO + コンプライアンス + リンク同時チェック</li>
+        <li>allowed-tools: Read, Grep, Glob（安全）</li>
+        <li>サブエージェント(context:fork)で並列</li>
+        <li>統一フォーマットでレポート出力</li>
+        <li>修正提案まで自動生成</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ================================================ -->
+  <!-- SECTION 5: CONTEXT PERSISTENCE -->
+  <!-- ================================================ -->
+  <div class="section-title"><span class="num">5</span> コンテキスト（知識）の持続性</div>
+
+  <div class="comparison">
+    <div class="before">
+      <div class="label"><span class="dot"></span> Before</div>
+      <div class="box-title">毎回コンテキストが消える</div>
+      <ul class="items">
+        <li>新しいセッションのたびにプロジェクト説明</li>
+        <li>「HTMLの構造はこうで...」を毎回伝える</li>
+        <li>CSSクラス命名規則を毎回説明</li>
+        <li>SEO要件を毎回指定</li>
+        <li>レスポンシブのブレークポイントを毎回伝達</li>
+        <li>過去のリサーチ結果が活用されない</li>
+      </ul>
+    </div>
+    <div class="arrow-col">→</div>
+    <div class="after">
+      <div class="label"><span class="dot"></span> After</div>
+      <div class="box-title">CLAUDE.md + Skills で永続化</div>
+      <ul class="items">
+        <li>CLAUDE.md にプロジェクト規約を一元管理</li>
+        <li>HTML テンプレートパターンが参考型Skillに</li>
+        <li>CSSプレフィックス体系(.ev-*, .iph-*)が定義済</li>
+        <li>SEO要件が Skill で自動適用</li>
+        <li>ブレークポイント等の技術仕様が永続化</li>
+        <li>過去リサーチをreference.mdで自動参照</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ================================================ -->
+  <!-- SECTION 6: NUMBERS / METRICS -->
+  <!-- ================================================ -->
+  <div class="section-title"><span class="num">6</span> 想定される効果（数値イメージ）</div>
+
+  <div class="metrics">
+    <div class="metric-card">
+      <div class="value red">7-10回</div>
+      <div class="desc">Before: 新ページ作成時の<br>やり取り回数</div>
+      <div class="change down">毎回ゼロから指示</div>
+    </div>
+    <div class="metric-card">
+      <div class="value green">1-2回</div>
+      <div class="desc">After: 新ページ作成時の<br>やり取り回数</div>
+      <div class="change up">Skill が全自動化</div>
+    </div>
+    <div class="metric-card">
+      <div class="value red">バラバラ</div>
+      <div class="desc">Before: ページ間の<br>品質・構造</div>
+      <div class="change down">人依存の一貫性</div>
+    </div>
+    <div class="metric-card">
+      <div class="value green">統一</div>
+      <div class="desc">After: ページ間の<br>品質・構造</div>
+      <div class="change up">テンプレート保証</div>
+    </div>
+    <div class="metric-card">
+      <div class="value red">1地域ずつ</div>
+      <div class="desc">Before: 全国展開の<br>スピード</div>
+      <div class="change down">手作業コピー</div>
+    </div>
+    <div class="metric-card">
+      <div class="value green">一括展開</div>
+      <div class="desc">After: 全国展開の<br>スピード</div>
+      <div class="change up">変数置換で自動化</div>
+    </div>
+  </div>
+
+  <!-- ================================================ -->
+  <!-- SECTION 7: SKILL MAP -->
+  <!-- ================================================ -->
+  <div class="section-title"><span class="num">7</span> 導入する Skills の全体マップ</div>
+
+  <div style="overflow-x:auto;">
+  <table class="priority">
+    <thead>
+      <tr>
+        <th>優先度</th>
+        <th>Skill 名</th>
+        <th>種別</th>
+        <th>何をするか</th>
+        <th>ガイド該当セクション</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="badge high">最優先</span></td>
+        <td>CLAUDE.md</td>
+        <td>知識注入</td>
+        <td>プロジェクト規約・構造・命名規則の永続化</td>
+        <td>-（Skills前の基盤）</td>
+      </tr>
+      <tr>
+        <td><span class="badge high">最優先</span></td>
+        <td>create-service-page</td>
+        <td>タスク型</td>
+        <td>サブページ一式を1コマンドで生成</td>
+        <td>§4 Task Content, §7 Subagent</td>
+      </tr>
+      <tr>
+        <td><span class="badge high">最優先</span></td>
+        <td>localize-site</td>
+        <td>タスク型</td>
+        <td>地域名・電話番号等を変数で自動差し替え</td>
+        <td>§5 String Substitutions</td>
+      </tr>
+      <tr>
+        <td><span class="badge mid">中</span></td>
+        <td>content-strategy</td>
+        <td>参考型</td>
+        <td>コンテンツ戦略テンプレ+過去パターン参照</td>
+        <td>§4 Reference Content</td>
+      </tr>
+      <tr>
+        <td><span class="badge mid">中</span></td>
+        <td>audit-page</td>
+        <td>タスク型</td>
+        <td>SEO/コンプライアンス/リンク一括監査</td>
+        <td>§6 allowed-tools, §7 fork</td>
+      </tr>
+      <tr>
+        <td><span class="badge low">低</span></td>
+        <td>pr-summary</td>
+        <td>タスク型</td>
+        <td>PR差分から変更サマリー自動生成</td>
+        <td>§7 Dynamic Context !`gh`</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- ================================================ -->
+  <!-- SECTION 8: IMPLEMENTATION ORDER -->
+  <!-- ================================================ -->
+  <div class="section-title"><span class="num">8</span> 実装の順番（ロードマップ）</div>
+
+  <div class="flow-row" style="margin-top: 20px;">
+    <div class="flow-box active" style="min-width: 180px;">
+      <div class="icon">📋</div>
+      <strong>Phase 1</strong><br>CLAUDE.md 作成
+      <div class="text">基盤づくり<br>プロジェクト規約の文書化</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box skill" style="min-width: 180px;">
+      <div class="icon">🔧</div>
+      <strong>Phase 2</strong><br>create-service-page
+      <div class="text">サブページ量産Skill<br>最も効果が大きい</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box skill" style="min-width: 180px;">
+      <div class="icon">🌏</div>
+      <strong>Phase 3</strong><br>localize-site
+      <div class="text">全国版展開Skill<br>地域カスタマイズ自動化</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box output" style="min-width: 180px;">
+      <div class="icon">🔍</div>
+      <strong>Phase 4</strong><br>audit + strategy
+      <div class="text">品質保証Skill群<br>監査・戦略の自動化</div>
+    </div>
+  </div>
+
+  <br><br>
+  <p style="text-align: center; color: #64748b; font-size: 0.85rem; padding-bottom: 40px;">
+    denki-kitami.com | Skills Before/After Analysis | 2026-02-01
+  </p>
+
+</div>
+</body>
+</html>
