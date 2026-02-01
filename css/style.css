@@ -66,12 +66,18 @@ body {
     flex-shrink: 0;
 }
 
-.logo h1 {
+.logo h1,
+.logo .logo-text {
     color: var(--primary-blue);
     font-size: 20px;
     font-weight: 700;
     margin: 0;
     white-space: nowrap;
+}
+
+.logo .logo-link {
+    text-decoration: none;
+    color: inherit;
 }
 
 .logo i {
@@ -3253,7 +3259,8 @@ footer {
         font-size: 14px;
     }
     
-    .logo h1 {
+    .logo h1,
+    .logo .logo-text {
         font-size: 20px;
     }
     
@@ -3275,7 +3282,8 @@ footer {
         display: block;
     }
     
-    .logo h1 {
+    .logo h1,
+    .logo .logo-text {
         font-size: 20px;
     }
 
@@ -3307,7 +3315,8 @@ footer {
         min-width: 0;
     }
 
-    .logo h1 {
+    .logo h1,
+    .logo .logo-text {
         font-size: 20px;
         white-space: nowrap;
     }
@@ -3780,7 +3789,8 @@ footer {
     }
 
     /* Header Small Mobile */
-    .logo h1 {
+    .logo h1,
+    .logo .logo-text {
         font-size: 20px;
     }
 
