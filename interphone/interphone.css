@@ -808,11 +808,11 @@
    ==================================== */
 @media (max-width: 768px) {
     .iph-hero {
-        min-height: 400px;
+        min-height: auto;
     }
 
     .iph-hero-content {
-        padding: 100px 20px 60px;
+        padding: 40px 20px 40px;
     }
 
     .iph-hero .hero-cta {
