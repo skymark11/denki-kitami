@@ -20,4 +20,20 @@
         <priority>0.8</priority>
     </url>
 
+    <!-- インターホン工事ページ -->
+    <url>
+        <loc>https://denki-kitami.com/interphone/</loc>
+        <lastmod>2026-02-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- 防犯カメラ設置工事ページ -->
+    <url>
+        <loc>https://denki-kitami.com/security-camera/</loc>
+        <lastmod>2026-02-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
 </urlset>
