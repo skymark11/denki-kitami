@@ -2972,15 +2972,23 @@ footer {
     border: 1px solid var(--border-light);
 }
 
-.business-content h3 {
-    color: #666;
+.business-content h3,
+.business-info h3 {
+    color: #333;
     font-size: 20px;
     margin-bottom: 10px;
 }
 
-.business-content p {
-    color: var(--text-light);
+.business-content p,
+.business-info p {
+    color: #666;
     margin-bottom: 20px;
+}
+
+.business-services span {
+    color: #555;
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.15);
 }
 
 /* ====================================
