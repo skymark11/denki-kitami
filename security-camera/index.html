@@ -227,29 +227,81 @@
         </div>
     </nav>
 
-    <!-- ヒーローセクション -->
-    <section class="cam-hero">
-        <div class="cam-hero-bg">
-            <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a2a4a 0%,#2d3a5f 50%,#1e3a5f 100%);"></div>
-            <div class="cam-hero-overlay"></div>
-        </div>
-        <div class="cam-hero-content">
-            <div class="container">
-                <div class="hero-badges">
-                    <span class="badge"><i class="fas fa-video"></i> 防犯カメラ設置</span>
-                    <span class="badge"><i class="fas fa-certificate"></i> 電気工事士資格保有</span>
-                    <span class="badge"><i class="fas fa-calculator"></i> 見積無料</span>
+    <!-- ヒーローセクション（スライドショー） -->
+    <section class="cam-hero-slideshow">
+        <div class="cam-slideshow-container">
+            <!-- スライド1 -->
+            <div class="cam-slide active">
+                <div class="cam-slide-background">
+                    <img src="../images/camera1.webp" alt="防犯カメラ設置工事の様子1" class="cam-slide-image">
+                    <div class="cam-slide-overlay"></div>
                 </div>
-                <h1>北見市の防犯カメラ設置工事なら<br>地元の電気工事店にお任せください</h1>
-                <p class="hero-subtitle">ご自宅や店舗に最適な防犯カメラを選定・設置いたします<br>月額費用なしの買い切り型だから、ランニングコストの心配もありません</p>
-                <div class="hero-cta">
-                    <a href="tel:07040800965" class="btn-cta btn-primary-cta">
-                        <i class="fas fa-phone"></i> 070-4080-0965
-                    </a>
-                    <a href="#contact" class="btn-cta btn-secondary-cta">
-                        <i class="fas fa-envelope"></i> 無料見積もり依頼
-                    </a>
+            </div>
+            <!-- スライド2 -->
+            <div class="cam-slide">
+                <div class="cam-slide-background">
+                    <img src="../images/camera2.webp" alt="防犯カメラ設置工事の様子2" class="cam-slide-image">
+                    <div class="cam-slide-overlay"></div>
                 </div>
+            </div>
+            <!-- スライド3 -->
+            <div class="cam-slide">
+                <div class="cam-slide-background">
+                    <img src="../images/camera3.webp" alt="防犯カメラ設置工事の様子3" class="cam-slide-image">
+                    <div class="cam-slide-overlay"></div>
+                </div>
+            </div>
+            <!-- スライド4 -->
+            <div class="cam-slide">
+                <div class="cam-slide-background">
+                    <img src="../images/camera4.webp" alt="防犯カメラ設置工事の様子4" class="cam-slide-image">
+                    <div class="cam-slide-overlay"></div>
+                </div>
+            </div>
+            <!-- スライド5 -->
+            <div class="cam-slide">
+                <div class="cam-slide-background">
+                    <img src="../images/camera5.webp" alt="防犯カメラ設置工事の様子5" class="cam-slide-image">
+                    <div class="cam-slide-overlay"></div>
+                </div>
+            </div>
+
+            <!-- ヒーローコンテンツ -->
+            <div class="cam-slide-content">
+                <div class="container">
+                    <div class="hero-badges">
+                        <span class="badge"><i class="fas fa-video"></i> 防犯カメラ設置</span>
+                        <span class="badge"><i class="fas fa-certificate"></i> 電気工事士資格保有</span>
+                        <span class="badge"><i class="fas fa-calculator"></i> 見積無料</span>
+                    </div>
+                    <h1>北見市の防犯カメラ設置工事なら<br>地元の電気工事店にお任せください</h1>
+                    <p class="hero-subtitle">ご自宅や店舗に最適な防犯カメラを選定・設置いたします<br>月額費用なしの買い切り型だから、ランニングコストの心配もありません</p>
+                    <div class="hero-cta">
+                        <a href="tel:07040800965" class="btn-cta btn-primary-cta">
+                            <i class="fas fa-phone"></i> 070-4080-0965
+                        </a>
+                        <a href="#contact" class="btn-cta btn-secondary-cta">
+                            <i class="fas fa-envelope"></i> 無料見積もり依頼
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ナビゲーション矢印 -->
+            <button class="cam-slide-nav cam-slide-prev" onclick="camChangeSlide(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="cam-slide-nav cam-slide-next" onclick="camChangeSlide(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <!-- スライド指標（ドット） -->
+            <div class="cam-slide-indicators">
+                <button class="cam-indicator active" onclick="camCurrentSlide(1)"></button>
+                <button class="cam-indicator" onclick="camCurrentSlide(2)"></button>
+                <button class="cam-indicator" onclick="camCurrentSlide(3)"></button>
+                <button class="cam-indicator" onclick="camCurrentSlide(4)"></button>
+                <button class="cam-indicator" onclick="camCurrentSlide(5)"></button>
             </div>
         </div>
     </section>
@@ -886,6 +938,47 @@
     <!-- JavaScript -->
     <script src="../js/script.js"></script>
     <script>
+        // 防犯カメラページ用 スライドショー制御
+        let camSlideIndex = 0;
+        let camSlideInterval;
+        const camSlides = document.querySelectorAll('.cam-slide');
+        const camIndicators = document.querySelectorAll('.cam-indicator');
+
+        function camShowSlide(index) {
+            if (index >= camSlides.length) index = 0;
+            if (index < 0) index = camSlides.length - 1;
+
+            camSlides.forEach(slide => slide.classList.remove('active'));
+            camIndicators.forEach(indicator => indicator.classList.remove('active'));
+
+            camSlides[index].classList.add('active');
+            camIndicators[index].classList.add('active');
+            camSlideIndex = index;
+        }
+
+        function camChangeSlide(direction) {
+            camShowSlide(camSlideIndex + direction);
+            camResetAutoPlay();
+        }
+
+        function camCurrentSlide(index) {
+            camShowSlide(index - 1);
+            camResetAutoPlay();
+        }
+
+        function camNextSlide() {
+            camChangeSlide(1);
+        }
+
+        function camResetAutoPlay() {
+            clearInterval(camSlideInterval);
+            camSlideInterval = setInterval(camNextSlide, 5000);
+        }
+
+        if (camSlides.length > 0) {
+            camSlideInterval = setInterval(camNextSlide, 5000);
+        }
+
         // 防犯カメラページ用 FAQ アコーディオン
         function toggleCamFaq(button) {
             const item = button.parentElement;

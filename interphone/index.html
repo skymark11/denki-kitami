@@ -223,30 +223,73 @@
         </div>
     </nav>
 
-    <!-- ヒーローセクション -->
-    <section class="iph-hero">
-        <div class="iph-hero-bg">
-            <!-- 後から実際の写真に差し替え -->
-            <div style="width:100%;height:100%;background:linear-gradient(135deg,#1e3a5f 0%,#2d5a3f 100%);"></div>
-            <div class="iph-hero-overlay"></div>
-        </div>
-        <div class="iph-hero-content">
-            <div class="container">
-                <div class="hero-badges">
-                    <span class="badge"><i class="fas fa-bell"></i> インターホン交換</span>
-                    <span class="badge"><i class="fas fa-certificate"></i> 電気工事士資格保有</span>
-                    <span class="badge"><i class="fas fa-calculator"></i> 見積無料</span>
+    <!-- ヒーローセクション（スライドショー） -->
+    <section class="iph-hero-slideshow">
+        <div class="iph-slideshow-container">
+            <!-- スライド1 -->
+            <div class="iph-slide active">
+                <div class="iph-slide-background">
+                    <img src="../images/interphone1.webp" alt="Panasonic製テレビドアホンの室内モニター親機と玄関子機がテーブルに並んでいる様子" loading="eager">
+                    <div class="iph-slide-overlay"></div>
                 </div>
-                <h1>北見市のインターホン・ドアホン交換・取り付け工事なら当店へ！</h1>
-                <p class="hero-subtitle">古いチャイムの交換・モニター付きドアホンへのグレードアップ・新規取り付けまで対応<br>電気工事士の資格を持つスタッフが安全・確実に施工します</p>
-                <div class="hero-cta">
-                    <a href="tel:07040800965" class="btn-cta btn-primary-cta">
-                        <i class="fas fa-phone"></i> 070-4080-0965
-                    </a>
-                    <a href="#contact" class="btn-cta btn-secondary-cta">
-                        <i class="fas fa-envelope"></i> 無料見積もり依頼
-                    </a>
+            </div>
+            <!-- スライド2 -->
+            <div class="iph-slide">
+                <div class="iph-slide-background">
+                    <img src="../images/interphone2.webp" alt="壁に設置されたテレビドアホンのモニターに玄関先の来訪者の男性が映っている様子" loading="lazy">
+                    <div class="iph-slide-overlay"></div>
                 </div>
+            </div>
+            <!-- スライド3 -->
+            <div class="iph-slide">
+                <div class="iph-slide-background">
+                    <img src="../images/interphone3.webp" alt="玄関の壁に取り付けられたPanasonic製カメラ付きドアホン玄関子機のアップ" loading="lazy">
+                    <div class="iph-slide-overlay"></div>
+                </div>
+            </div>
+            <!-- スライド4 -->
+            <div class="iph-slide">
+                <div class="iph-slide-background">
+                    <img src="../images/interphone4.webp" alt="Panasonic製ワイヤレスモニター子機の画面に玄関先の来訪者が映っている様子" loading="lazy">
+                    <div class="iph-slide-overlay"></div>
+                </div>
+            </div>
+
+            <!-- ヒーローコンテンツ -->
+            <div class="iph-slide-content">
+                <div class="container">
+                    <div class="hero-badges">
+                        <span class="badge"><i class="fas fa-bell"></i> インターホン交換</span>
+                        <span class="badge"><i class="fas fa-certificate"></i> 電気工事士資格保有</span>
+                        <span class="badge"><i class="fas fa-calculator"></i> 見積無料</span>
+                    </div>
+                    <h1>北見市のインターホン・ドアホン交換・取り付け工事なら当店へ！</h1>
+                    <p class="hero-subtitle">古いチャイムの交換・モニター付きドアホンへのグレードアップ・新規取り付けまで対応<br>電気工事士の資格を持つスタッフが安全・確実に施工します</p>
+                    <div class="hero-cta">
+                        <a href="tel:07040800965" class="btn-cta btn-primary-cta">
+                            <i class="fas fa-phone"></i> 070-4080-0965
+                        </a>
+                        <a href="#contact" class="btn-cta btn-secondary-cta">
+                            <i class="fas fa-envelope"></i> 無料見積もり依頼
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ナビゲーション矢印 -->
+            <button class="iph-slide-nav iph-slide-prev" onclick="iphChangeSlide(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="iph-slide-nav iph-slide-next" onclick="iphChangeSlide(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <!-- スライド指標（ドット） -->
+            <div class="iph-slide-indicators">
+                <button class="iph-indicator active" onclick="iphCurrentSlide(1)"></button>
+                <button class="iph-indicator" onclick="iphCurrentSlide(2)"></button>
+                <button class="iph-indicator" onclick="iphCurrentSlide(3)"></button>
+                <button class="iph-indicator" onclick="iphCurrentSlide(4)"></button>
             </div>
         </div>
     </section>
@@ -776,6 +819,47 @@
     <!-- JavaScript -->
     <script src="../js/script.js"></script>
     <script>
+        // インターホンページ用 スライドショー制御
+        let iphSlideIndex = 0;
+        let iphSlideInterval;
+        const iphSlides = document.querySelectorAll('.iph-slide');
+        const iphIndicators = document.querySelectorAll('.iph-indicator');
+
+        function iphShowSlide(index) {
+            if (index >= iphSlides.length) index = 0;
+            if (index < 0) index = iphSlides.length - 1;
+
+            iphSlides.forEach(slide => slide.classList.remove('active'));
+            iphIndicators.forEach(indicator => indicator.classList.remove('active'));
+
+            iphSlides[index].classList.add('active');
+            iphIndicators[index].classList.add('active');
+            iphSlideIndex = index;
+        }
+
+        function iphChangeSlide(direction) {
+            iphShowSlide(iphSlideIndex + direction);
+            iphResetAutoPlay();
+        }
+
+        function iphCurrentSlide(index) {
+            iphShowSlide(index - 1);
+            iphResetAutoPlay();
+        }
+
+        function iphNextSlide() {
+            iphChangeSlide(1);
+        }
+
+        function iphResetAutoPlay() {
+            clearInterval(iphSlideInterval);
+            iphSlideInterval = setInterval(iphNextSlide, 5000);
+        }
+
+        if (iphSlides.length > 0) {
+            iphSlideInterval = setInterval(iphNextSlide, 5000);
+        }
+
         // インターホンページ用 FAQ アコーディオン
         function toggleIphFaq(button) {
             const item = button.parentElement;
