@@ -37,6 +37,34 @@ Allow: /
 User-agent: Slurp
 Allow: /
 
+# ====================
+# AI検索エンジン用の設定
+# ====================
+
+# ChatGPT / OpenAI
+User-agent: GPTBot
+Allow: /
+
+# Claude / Anthropic
+User-agent: ClaudeBot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Google AI（Gemini等）
+User-agent: Google-Extended
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Common Crawl（AI学習データ）
+User-agent: CCBot
+Allow: /
+
 # クロール速度の調整（オプション）
 # サーバーへの負荷を軽減したい場合は以下のコメントを外してください
 # Crawl-delay: 1
