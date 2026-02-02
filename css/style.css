@@ -518,18 +518,46 @@ body {
 }
 
 .service-item:hover {
-    background-color: #f8f9fa;
-    border-radius: 6px;
-    padding-left: 10px;
-    padding-right: 10px;
+    background-color: #eef3fb;
+    border-radius: 8px;
 }
 
-.service-item i {
+/* リンク付きサービス項目 */
+a.service-item-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+a.service-item-link:hover {
+    background-color: #e8f0fe;
+}
+
+.link-arrow {
+    font-size: 12px;
+    color: var(--primary-blue);
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    margin-left: 8px;
+    margin-right: 0;
+    width: auto;
+    flex-shrink: 0;
+}
+
+a.service-item-link:hover .link-arrow {
+    opacity: 1;
+    transform: translateX(3px);
+}
+
+.service-item i:first-child {
     font-size: 18px;
     color: var(--primary-orange);
     margin-right: 12px;
     width: 20px;
     text-align: center;
+    flex-shrink: 0;
 }
 
 .service-item span {
@@ -2192,26 +2220,42 @@ body {
     background: #229954;
 }
 
-/* その他カード */
-.trouble-card.others {
-    border-left-color: #95a5a6;
+/* 防犯・セキュリティカード */
+.trouble-card.security {
+    border-left-color: #e74c3c;
 }
 
-.trouble-card.others .trouble-icon {
-    background: rgba(149, 165, 166, 0.1);
+.trouble-card.security .trouble-icon {
+    background: rgba(231, 76, 60, 0.1);
 }
 
-.trouble-card.others .trouble-icon i {
-    color: #95a5a6;
+.trouble-card.security .trouble-icon i {
+    color: #e74c3c;
 }
 
-.btn-trouble.others {
-    background: #95a5a6;
+.btn-trouble.security {
+    background: #e74c3c;
     color: white;
 }
 
-.btn-trouble.others:hover {
-    background: #7f8c8d;
+.btn-trouble.security:hover {
+    background: #c0392b;
+}
+
+/* トラブルカード内の複数ボタン */
+.trouble-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.trouble-buttons .btn-trouble {
+    flex: 1;
+    text-align: center;
+    font-size: 15px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* CTA部分 */
