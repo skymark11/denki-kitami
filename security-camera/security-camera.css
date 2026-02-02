@@ -672,7 +672,7 @@
 .cam-reason-card .icon {
     width: 70px;
     height: 70px;
-    background: linear-gradient(135deg, #1a2a4a, #2c5282);
+    background: linear-gradient(135deg, var(--primary-blue), #2c5282);
     color: white;
     border-radius: 50%;
     display: flex;
@@ -861,7 +861,7 @@
    CTA セクション
    ==================================== */
 .cam-cta-section {
-    background: linear-gradient(135deg, #1a2a4a 0%, #2c5282 100%);
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
     color: white;
     padding: 60px 0;
     text-align: center;
